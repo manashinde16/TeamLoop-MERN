@@ -1,9 +1,31 @@
 services:
   - type: web
-    name: backend
+    name: teamloop-backend
     env: node
-    rootDir: backend
-    buildCommand: npm install && npm run build
+    plan: free
+    region: oregon
+    buildCommand: npm install
     startCommand: npm start
     envVars:
-      - fromDotEnv: true
+      - key: PORT
+        sync: false
+      - key: NODE_ENV
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: SESSION_EXPIRES_IN
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_CALLBACK_URL
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: FRONTEND_GOOGLE_CALLBACK_URL
+        sync: false
+    autoDeploy: true
+    rootDir: teamloop
